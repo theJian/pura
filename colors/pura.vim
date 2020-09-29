@@ -47,13 +47,13 @@ let s:palette_yellow   = '#572800'
 let s:palette_blue     = '#000EAD'
 let s:palette_magenta  = '#530080'
 let s:palette_cyan     = '#103B3D'
-let s:palette_white    = '#909090'
+let s:palette_white    = '#969696'
 
 " Bright colors
 let s:palette_bright_black   = '#4D4D4D'
 let s:palette_bright_red     = '#A30034'
 let s:palette_bright_green   = '#005C2F'
-let s:palette_bright_yellow  = '#5B4E06'
+let s:palette_bright_yellow  = '#6B4900'
 let s:palette_bright_blue    = '#004FA3'
 let s:palette_bright_magenta = '#8800A3'
 let s:palette_bright_cyan    = '#005475'
@@ -63,7 +63,7 @@ let s:palette_bright_white   = '#FFFFFF'
 " Scheme =======================================================================
 
 call s:hi('ColorColumn', 'NONE', s:palette_white)
-call s:hi('Conceal', s:palette_fg) " TODO
+call s:hi('Conceal', s:palette_fg)
 call s:hi('Cursor', 'NONE', 'NONE', 'reverse')
 call s:hi('CursorColumn', 'NONE', s:brightness(s:palette_bg, 0.15))
 call s:hi('Normal', s:palette_fg, s:palette_bg)
@@ -72,8 +72,82 @@ call s:hi('EndOfBuffer', 'bg')
 call s:hi('Folded', s:palette_bright_black)
 call s:hi('FoldColumn', s:palette_fg, s:palette_bg)
 call s:hi('SignColumn', s:palette_fg, s:palette_bg)
-call s:hi('IncSearch', s:palette_bright_white, s:palette_black)
+call s:hi('IncSearch', s:palette_black, s:palette_bright_white, 'bold,underline')
+call s:hi('Search', s:palette_bright_white, s:palette_black)
+call s:hi('LineNr', s:palette_white)
+call s:hi('CursorLineNr', s:palette_bright_black)
+call s:hi('DiffAdd', 'NONE', s:brightness(s:palette_green, 0.7))
+call s:hi('DiffChange', 'NONE', s:brightness(s:palette_red, 0.75))
+call s:hi('DiffDelete', 'NONE', s:brightness(s:palette_red, 0.75), 'strikethrough')
+call s:hi('DiffText', 'NONE', s:brightness(s:palette_bright_red, 0.6), 'bold')
+call s:hi('Directory', s:palette_blue)
+call s:hi('ErrorMsg', s:palette_bright_red, 'NONE', 'bold,reverse')
+call s:hi('WarningMsg', s:palette_bright_yellow, 'NONE', 'bold,reverse')
+call s:hi('ModeMsg', s:palette_fg)
+call s:hi('MoreMsg', s:palette_fg)
+call s:hi('MatchParen', 'NONE', s:brightness(s:palette_bg, 0.4))
+call s:hi('NonText', s:brightness(s:palette_bg, -0.2))
+call s:hi('Whitespace', s:brightness(s:palette_bg, -0.2))
+call s:hi('SpecialKey', s:brightness(s:palette_bg, -0.2))
+call s:hi('Pmenu', s:palette_bright_black, s:brightness(s:palette_bg, 0.25))
+call s:hi('PmenuSel', s:palette_black, s:brightness(s:palette_bg, 0.5), 'underline')
+call s:hi('PmenuSbar', 'NONE', s:brightness(s:palette_white, -0.1))
+call s:hi('PmenuThumb', 'NONE', s:palette_bright_black)
+call s:hi('Question', s:palette_fg, 'NONE', 'bold')
+call s:hi('SpellBad', s:palette_bright_red, 'NONE', 'undercurl')
+call s:hi('SpellCap', s:palette_bright_yellow, 'NONE', 'undercurl')
+call s:hi('SpellLocal', s:palette_bright_green, 'NONE', 'undercurl')
+call s:hi('SpellRare', s:palette_bright_cyan, 'NONE', 'undercurl')
+call s:hi('StatusLine', s:palette_black, s:brightness(s:palette_bg, 0.5), 'underline')
+call s:hi('StatusLineNC', s:palette_bright_black, s:brightness(s:palette_bg, 0.2), 'underline')
+call s:hi('StatusLineTerm', s:palette_black, s:brightness(s:palette_bg, 0.5), 'underline')
+call s:hi('StatusLineTermNC', s:palette_bright_black, s:brightness(s:palette_bg, 0.2), 'underline')
+call s:hi('TabLine', s:palette_bright_black, s:brightness(s:palette_bg, 0.2), 'underline')
+call s:hi('TabLineSel', s:palette_black, s:brightness(s:palette_bg, 0.5), 'underline')
+call s:hi('TabLineFill', s:palette_bright_black, s:brightness(s:palette_bg, 0.2), 'underline')
+call s:hi('VertSplit', s:palette_white)
+call s:hi('Visual', 'NONE', s:brightness(s:palette_bg, 0.5))
+call s:hi('VisualNOS', 'NONE', s:brightness(s:palette_bg, 0.5))
+call s:hi('QuickFixLine', 'NONE', s:brightness(s:palette_bg, 0.3), 'bold,underline')
+call s:hi('Substitute', s:palette_bright_white, s:palette_black)
+call s:hi('Comment', s:palette_white, 'NONE', 'italic')
+call s:hi('Constant', s:palette_cyan)
+call s:hi('String', s:palette_cyan)
+call s:hi('Character', s:palette_cyan)
+call s:hi('Number', s:palette_cyan)
+call s:hi('Boolean', s:palette_cyan)
+call s:hi('Float', s:palette_cyan)
+call s:hi('Identifier', s:palette_blue)
+call s:hi('Function', s:palette_blue)
+call s:hi('Statement', s:palette_yellow)
+call s:hi('Conditional', s:palette_yellow)
+call s:hi('Repeat', s:palette_yellow)
+call s:hi('Label', s:palette_yellow)
+call s:hi('Operator', s:palette_yellow)
+call s:hi('Keyword', s:palette_yellow)
+call s:hi('Exception', s:palette_yellow)
+call s:hi('PreProc', s:palette_magenta)
+call s:hi('Include', s:palette_magenta)
+call s:hi('Define', s:palette_magenta)
+call s:hi('Macro', s:palette_magenta)
+call s:hi('PreCondit', s:palette_magenta)
+call s:hi('Type', s:palette_green, 'NONE', 'italic')
+call s:hi('StorageClass', s:palette_green, 'NONE', 'italic')
+call s:hi('Structure', s:palette_green, 'NONE', 'italic')
+call s:hi('Typedef', s:palette_green, 'NONE', 'italic')
+call s:hi('Special', s:palette_red)
+call s:hi('SpecialChar', s:palette_red)
+call s:hi('Tag', s:palette_red)
+call s:hi('Delimiter', s:palette_red)
+call s:hi('SpecialComment', s:palette_red)
+call s:hi('Debug', s:palette_red, 'NONE', 'bold')
+call s:hi('Underlined', s:palette_bright_blue, 'NONE', 'underline')
+call s:hi('Ignore', s:palette_bright_black, 'NONE', 'italic')
+call s:hi('Error', s:palette_bright_white, s:palette_bright_red)
+call s:hi('Todo', 'NONE', s:palette_white, 'bold,underline')
+call s:hi('Title', s:palette_red)
 
-hi link lCursor Cursor
-hi link CursorIM Cursor
-hi link CursorLine CursorColumn
+hi! link lCursor Cursor
+hi! link CursorIM Cursor
+hi! link TermCursor Cursor
+hi! link CursorLine CursorColumn
