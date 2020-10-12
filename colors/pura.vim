@@ -81,7 +81,7 @@ let g:terminal_color_15 = s:palette_bright_white
 
 call s:hi('Boolean', s:palette_cyan)
 call s:hi('Character', s:palette_cyan)
-call s:hi('ColorColumn', 'NONE', s:palette_white)
+call s:hi('ColorColumn', 'NONE', s:brightness(s:palette_bg, 0.2))
 call s:hi('Comment', s:palette_white, 'NONE', 'italic')
 call s:hi('Conceal', s:palette_fg)
 call s:hi('Conditional', s:palette_yellow)
