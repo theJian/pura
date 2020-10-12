@@ -33,6 +33,22 @@ function! s:brightness(hex, percent)
     return '#' . rr . gg . bb
 endfunction
 
+function! s:blend(c1, c2, ratio)
+    let iratio = 1 - a:ratio
+
+    let r1 = str2nr(a:c1[1:2], 16)
+    let g1 = str2nr(a:c1[3:4], 16)
+    let b1 = str2nr(a:c1[5:6], 16)
+
+    let r2 = str2nr(a:c2[1:2], 16)
+    let g2 = str2nr(a:c2[3:4], 16)
+    let b2 = str2nr(a:c2[5:6], 16)
+
+    let r = printf('%02x', float2nr(r1 * iratio + r2 * a:ratio))
+    let g = printf('%02x', float2nr(g1 * iratio + g2 * a:ratio))
+    let b = printf('%02x', float2nr(b1 * iratio + b2 * a:ratio))
+    return '#' . r . g . b
+endfunction
 
 " Palette ======================================================================
 
@@ -164,8 +180,13 @@ call s:hi('VisualNOS', 'NONE', s:brightness(s:palette_bg, 0.5))
 call s:hi('WarningMsg', s:palette_bright_yellow, 'NONE', 'bold,reverse')
 call s:hi('WildMenu', 'NONE', 'NONE', 'reverse')
 call s:hi('Whitespace', s:brightness(s:palette_bg, -0.2))
+
 call s:hi('diffRemoved', 'NONE', s:brightness(s:palette_bright_red, 0.8))
 call s:hi('diffAdded', 'NONE', s:brightness(s:palette_bright_green, 0.8))
+call s:hi('healthSuccess', s:palette_bright_white, s:palette_bright_green)
+call s:hi('healthWarning', s:palette_bright_white, s:palette_bright_yellow)
+call s:hi('healthError', s:palette_bright_white, s:palette_bright_red)
+call s:hi('LspDiagnosticsError', s:blend(s:palette_bg, s:palette_bright_red, 0.4))
 
 hi! link lCursor Cursor
 hi! link CursorIM Cursor
