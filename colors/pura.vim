@@ -180,16 +180,40 @@ call s:hi('VisualNOS', 'NONE', s:brightness(s:palette_bg, 0.5))
 call s:hi('WarningMsg', s:palette_bright_yellow, 'NONE', 'bold,reverse')
 call s:hi('WildMenu', 'NONE', 'NONE', 'reverse')
 call s:hi('Whitespace', s:brightness(s:palette_bg, -0.2))
-
-call s:hi('diffRemoved', 'NONE', s:brightness(s:palette_bright_red, 0.8))
-call s:hi('diffAdded', 'NONE', s:brightness(s:palette_bright_green, 0.8))
-call s:hi('healthSuccess', s:palette_bright_white, s:palette_bright_green)
-call s:hi('healthWarning', s:palette_bright_white, s:palette_bright_yellow)
-call s:hi('healthError', s:palette_bright_white, s:palette_bright_red)
-call s:hi('LspDiagnosticsError', s:blend(s:palette_bg, s:palette_bright_red, 0.4))
-
 hi! link lCursor Cursor
 hi! link CursorIM Cursor
 hi! link TermCursor Cursor
 hi! link CursorLine CursorColumn
 
+" Lsp
+call s:hi('LspDiagnosticsError', s:blend(s:palette_bg, s:palette_bright_red, 0.35), 'NONE', 'undercurl,italic')
+call s:hi('LspDiagnosticsErrorSign', s:palette_bright_red, s:blend(s:palette_bg, s:palette_red, 0.1), 'bold,italic')
+call s:hi('LspDiagnosticsErrorFloating', s:palette_red)
+call s:hi('LspDiagnosticsWarning', s:blend(s:palette_bg, s:palette_yellow, 0.3), 'NONE', 'undercurl,italic')
+call s:hi('LspDiagnosticsWarningSign', s:palette_yellow, 'NONE', 'italic')
+call s:hi('LspDiagnosticsWarningFloating', s:palette_yellow)
+call s:hi('LspDiagnosticsInformation', s:blend(s:palette_bg, s:palette_bright_cyan, 0.4), 'italic')
+call s:hi('LspDiagnosticsInformationSign', s:palette_bright_cyan, 'NONE', 'italic')
+call s:hi('LspDiagnosticsInformationFloating', s:palette_bright_cyan)
+call s:hi('LspDiagnosticsHint', s:blend(s:palette_bg, s:palette_bright_white, 0.55), 'NONE', 'italic')
+call s:hi('LspDiagnosticsHintSign', s:blend(s:palette_bg, s:palette_bright_white, 0.8), 'NONE', 'italic')
+call s:hi('LspDiagnosticsHintFloating', s:palette_black)
+" call s:hi('LspReferenceText')
+" call s:hi('LspReferenceRead')
+" call s:hi('LspReferenceWrite')
+
+" Help Doc
+call s:hi('helpExample', 'NONE', s:brightness(s:palette_bg, -0.2))
+hi! link helpCommand helpExample
+
+" Health
+call s:hi('healthSuccess', s:palette_bright_white, s:palette_bright_green)
+call s:hi('healthWarning', s:palette_bright_white, s:palette_bright_yellow)
+call s:hi('healthError', s:palette_bright_white, s:palette_bright_red)
+
+" Misc
+call s:hi('diffRemoved', 'NONE', s:brightness(s:palette_bright_red, 0.8))
+call s:hi('diffAdded', 'NONE', s:brightness(s:palette_bright_green, 0.8))
+
+" TypeScript
+hi! link typescriptImport Include
