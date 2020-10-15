@@ -17,19 +17,32 @@ endif
 
 let g:colors_name = 'pura'
 
+function! s:min(a, b)
+    if a:a > a:b
+        return a:b
+    endif
+    return a:a
+endfunction
+
+function! s:max(a, b)
+    if a:a > a:b
+        return a:a
+    endif
+    return a:b
+endfunction
 
 function! s:hi(group, ...)
     exec printf('hi %s guifg=%s guibg=%s gui=%s', a:group, get(a:, 1, 'NONE'), get(a:, 2, 'NONE'), get(a:, 3, 'NONE'))
 endfunction
 
-function! s:brightness(hex, percent)
+function! s:brightness(hex, n)
     let r = str2nr(a:hex[1:2], 16)
     let g = str2nr(a:hex[3:4], 16)
     let b = str2nr(a:hex[5:6], 16)
 
-    let rr = printf('%02x', float2nr(r + (255 - r) * a:percent))
-    let gg = printf('%02x', float2nr(g + (255 - g) * a:percent))
-    let bb = printf('%02x', float2nr(b + (255 - b) * a:percent))
+    let rr = printf('%02x', float2nr(round(s:min(s:max(0, r + r * a:n), 255))))
+    let gg = printf('%02x', float2nr(round(s:min(s:max(0, g + g * a:n), 255))))
+    let bb = printf('%02x', float2nr(round(s:min(s:max(0, b + b * a:n), 255))))
     return '#' . rr . gg . bb
 endfunction
 
@@ -75,6 +88,8 @@ let s:palette_bright_magenta = '#8800A3'
 let s:palette_bright_cyan    = '#005475'
 let s:palette_bright_white   = '#FFFFFF'
 
+let s:palette_search_highlight = '#FFFF00'
+
 " Terminal colors
 let g:terminal_color_0  = s:palette_black
 let g:terminal_color_1  = s:palette_red
@@ -103,7 +118,7 @@ call s:hi('Conceal', s:palette_fg)
 call s:hi('Conditional', s:palette_bright_yellow)
 call s:hi('Constant', s:palette_cyan)
 call s:hi('Cursor', 'NONE', 'NONE', 'reverse')
-call s:hi('CursorColumn', 'NONE', s:brightness(s:palette_bg, 0.15))
+call s:hi('CursorColumn', 'NONE', s:brightness(s:palette_bg, 0.1))
 call s:hi('CursorLineNr', s:palette_bright_black)
 call s:hi('Debug', s:palette_red, 'NONE', 'bold')
 call s:hi('Define', s:palette_bright_magenta)
@@ -123,7 +138,7 @@ call s:hi('Folded', s:palette_bright_black)
 call s:hi('Function', s:palette_blue)
 call s:hi('Identifier', s:palette_blue)
 call s:hi('Ignore', s:palette_bright_black, 'NONE', 'italic')
-call s:hi('IncSearch', s:palette_black, s:palette_bright_white, 'bold,underline')
+call s:hi('IncSearch', 'NONE', s:palette_black, 'bold')
 call s:hi('Include', s:palette_magenta)
 call s:hi('Keyword', s:palette_yellow)
 call s:hi('Label', s:palette_bright_yellow)
@@ -145,7 +160,7 @@ call s:hi('PreProc', s:palette_magenta)
 call s:hi('Question', s:palette_fg, 'NONE', 'bold')
 call s:hi('QuickFixLine', 'NONE', s:brightness(s:palette_bg, 0.3), 'bold,underline')
 call s:hi('Repeat', s:palette_yellow)
-call s:hi('Search', s:palette_black, s:brightness(s:palette_bg, 0.5), 'underline')
+call s:hi('Search', 'NONE', s:brightness(s:palette_search_highlight, -0.3))
 call s:hi('SignColumn', s:palette_fg, s:palette_bg)
 call s:hi('Special', s:palette_red)
 call s:hi('SpecialChar', s:palette_red)
@@ -164,7 +179,7 @@ call s:hi('StorageClass', s:palette_bright_green, 'NONE', 'italic')
 call s:hi('String', s:palette_bright_cyan)
 call s:hi('Structure', s:palette_green, 'NONE', 'italic')
 call s:hi('Substitute', s:palette_bright_white, s:palette_black)
-call s:hi('TabLine', s:palette_bright_black, s:brightness(s:palette_bg, 0.2), 'underline')
+call s:hi('TabLine', s:palette_bright_black, s:brightness(s:palette_bg, 0.1), 'underline')
 call s:hi('TabLineFill', s:palette_bright_black, s:brightness(s:palette_bg, 0.2), 'underline')
 call s:hi('TabLineSel', s:palette_black, s:brightness(s:palette_bg, 0.5), 'underline')
 call s:hi('Tag', s:palette_bright_blue)
