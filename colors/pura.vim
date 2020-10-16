@@ -221,7 +221,7 @@ hi! link helpCommand helpExample
 
 " Health
 call s:hi('healthSuccess', s:palette_bright_white, s:palette_bright_green)
-call s:hi('healthWarning', s:palette_bright_white, s:palette_bright_yellow)
+call s:hi('healthWarning', s:palette_bright_white, s:palette_yellow)
 call s:hi('healthError', s:palette_bright_white, s:palette_bright_red)
 
 " Misc
@@ -230,5 +230,3 @@ call s:hi('diffAdded', 'NONE', s:brightness(s:palette_green, 212))
 
 " TypeScript
 hi! link typescriptImport Include
-
-" hifsfashifa
