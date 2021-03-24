@@ -65,11 +65,11 @@ endfunction
 
 " Palette ======================================================================
 
-let s:palette_bg   = '#C4C4C4'
+let s:palette_bg   = '#CFCFCF'
 let s:palette_fg   = '#000000'
 
 " Normal colors
-let s:palette_black    = '#171717'
+let s:palette_black    = '#000000'
 let s:palette_red      = '#700000'
 let s:palette_green    = '#0A3D10'
 let s:palette_yellow   = '#703C00'
