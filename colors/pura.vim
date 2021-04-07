@@ -65,28 +65,28 @@ endfunction
 
 " Palette ======================================================================
 
-let s:palette_bg   = '#CFCFCF'
+let s:palette_bg   = '#c7c7cc'
 let s:palette_fg   = '#000000'
 
 " Normal colors
 let s:palette_black    = '#000000'
-let s:palette_red      = '#700000'
-let s:palette_green    = '#0A3D10'
-let s:palette_yellow   = '#703C00'
-let s:palette_blue     = '#000EAD'
+let s:palette_red      = '#9e0010'
+let s:palette_green    = '#123500'
+let s:palette_yellow   = '#8e4000'
+let s:palette_blue     = '#000ead'
 let s:palette_magenta  = '#530080'
-let s:palette_cyan     = '#103B3D'
-let s:palette_white    = '#969696'
+let s:palette_cyan     = '#00555a'
+let s:palette_white    = '#78787d'
 
 " Bright colors
-let s:palette_bright_black   = '#4D4D4D'
-let s:palette_bright_red     = '#A30034'
-let s:palette_bright_green   = '#005C2F'
-let s:palette_bright_yellow  = '#614E00'
-let s:palette_bright_blue    = '#004FA3'
-let s:palette_bright_magenta = '#8800A3'
-let s:palette_bright_cyan    = '#005475'
-let s:palette_bright_white   = '#FFFFFF'
+let s:palette_bright_black   = '#454554'
+let s:palette_bright_red     = '#d30f45'
+let s:palette_bright_green   = '#35840b'
+let s:palette_bright_yellow  = '#f4ff37'
+let s:palette_bright_blue    = '#004fa3'
+let s:palette_bright_magenta = '#8800a3'
+let s:palette_bright_cyan    = '#456868'
+let s:palette_bright_white   = '#ffffff'
 
 " Terminal colors
 let g:terminal_color_0  = s:palette_black
