@@ -65,27 +65,31 @@ endfunction
 
 " Palette ======================================================================
 
-let s:palette_bg   = '#c7c7cc'
+let s:palette_bg   = '#bdbdc1'
+let s:palette_bg2  = '#c6c2b6'
+let s:palette_bg3  = '#dddde1'
 let s:palette_fg   = '#000000'
+let s:palette_fg2  = '#8d8d90'
+let s:palette_cl   = '#c7c7cc'
 
 " Normal colors
 let s:palette_black    = '#000000'
-let s:palette_red      = '#9e0010'
-let s:palette_green    = '#123500'
+let s:palette_red      = '#ab1239'
+let s:palette_green    = '#3f602b'
 let s:palette_yellow   = '#8e4000'
 let s:palette_blue     = '#000ead'
-let s:palette_magenta  = '#530080'
-let s:palette_cyan     = '#00555a'
-let s:palette_white    = '#78787d'
+let s:palette_magenta  = '#5600d6'
+let s:palette_cyan     = '#006c7f'
+let s:palette_white    = '#fff2eb'
 
 " Bright colors
 let s:palette_bright_black   = '#454554'
 let s:palette_bright_red     = '#d30f45'
 let s:palette_bright_green   = '#35840b'
 let s:palette_bright_yellow  = '#f4ff37'
-let s:palette_bright_blue    = '#004fa3'
+let s:palette_bright_blue    = '#2e46ff'
 let s:palette_bright_magenta = '#8800a3'
-let s:palette_bright_cyan    = '#456868'
+let s:palette_bright_cyan    = '#2f9392'
 let s:palette_bright_white   = '#ffffff'
 
 " Terminal colors
@@ -108,116 +112,108 @@ let g:terminal_color_15 = s:palette_bright_white
 
 " Scheme =======================================================================
 
-call s:hi('Boolean', s:palette_cyan)
-call s:hi('Character', s:palette_bright_cyan)
-call s:hi('ColorColumn', 'NONE', s:brightness(s:palette_bg, -4))
-call s:hi('Comment', s:palette_white, 'NONE', 'italic')
-call s:hi('Conceal', s:palette_fg)
-call s:hi('Conditional', s:palette_bright_yellow)
-call s:hi('Constant', s:palette_cyan)
+call s:hi('Boolean', s:palette_red)
+call s:hi('Character', s:palette_green)
+call s:hi('Comment', s:palette_bright_black, 'NONE', 'italic')
+call s:hi('Conditional', s:palette_bright_blue)
+call s:hi('Constant', s:palette_bright_green)
 call s:hi('Cursor', 'NONE', 'NONE', 'reverse')
-call s:hi('CursorColumn', 'NONE', s:brightness(s:palette_bg, 4))
-call s:hi('CursorLineNr', s:palette_bright_black)
+call s:hi('CursorColumn', 'NONE', s:palette_cl)
+call s:hi('CursorLineNr', s:palette_black, s:palette_bg3, 'bold')
 call s:hi('Debug', s:palette_red, 'NONE', 'bold')
 call s:hi('Define', s:palette_bright_magenta)
-call s:hi('Delimiter', 'NONE')
 call s:hi('DiffAdd', 'NONE', s:brightness(s:palette_green, 212))
 call s:hi('DiffChange', 'NONE', s:brightness(s:palette_red, 228))
 call s:hi('DiffDelete', 'NONE', s:brightness(s:palette_red, 228), 'strikethrough')
 call s:hi('DiffText', 'NONE', s:brightness(s:palette_red, 160), 'bold')
 call s:hi('Directory', s:palette_blue)
 call s:hi('EndOfBuffer', 'bg')
-call s:hi('Error', s:palette_bright_white, s:palette_bright_red)
-call s:hi('ErrorMsg', s:palette_bright_red, 'NONE', 'bold,reverse')
+call s:hi('Error', s:palette_bright_white, s:palette_bright_red, 'bold')
+call s:hi('ErrorMsg', s:palette_bright_red, 'NONE', 'bold')
 call s:hi('Exception', s:palette_bright_red)
-call s:hi('Float', s:palette_cyan)
-call s:hi('FoldColumn', s:palette_fg, s:palette_bg)
-call s:hi('Folded', s:palette_bright_black)
+call s:hi('Float', s:palette_red)
+call s:hi('Folded', s:palette_white)
 call s:hi('Function', s:palette_blue)
 call s:hi('Identifier', s:palette_blue)
 call s:hi('Ignore', s:palette_bright_black, 'NONE', 'italic')
-call s:hi('IncSearch', 'NONE', s:brightness(s:palette_yellow, 128), 'bold')
-call s:hi('Include', s:palette_magenta)
-call s:hi('Keyword', s:palette_yellow)
-call s:hi('Label', s:palette_bright_yellow)
-call s:hi('LineNr', s:palette_white)
+call s:hi('IncSearch', s:palette_yellow, s:palette_bright_yellow, 'bold,underline')
+call s:hi('Include', s:palette_bright_magenta)
+call s:hi('Keyword', s:palette_magenta)
+call s:hi('Label', s:palette_yellow)
+call s:hi('LineNr', s:palette_fg2)
 call s:hi('Macro', s:palette_bright_magenta)
-call s:hi('MatchParen', 'NONE', s:brightness(s:palette_bg, 32))
-call s:hi('ModeMsg', s:palette_fg)
-call s:hi('MoreMsg', s:palette_fg)
-call s:hi('NonText', s:brightness(s:palette_bg, -64))
+call s:hi('MatchParen', 'NONE', 'NONE', 'reverse')
+call s:hi('ModeMsg', s:palette_white, s:palette_bright_blue)
+call s:hi('MoreMsg', s:palette_blue)
+call s:hi('NonText', s:palette_fg2)
 call s:hi('Normal', s:palette_fg, s:palette_bg)
-call s:hi('Number', s:palette_cyan)
+call s:hi('Number', s:palette_red)
 call s:hi('Operator', 'NONE')
-call s:hi('Pmenu', s:palette_bright_black, s:brightness(s:palette_bg, 16))
-call s:hi('PmenuSbar', 'NONE', s:palette_white)
-call s:hi('PmenuSel', s:palette_black, s:brightness(s:palette_bg, 32), 'underline')
-call s:hi('PmenuThumb', 'NONE', s:palette_bright_black)
+call s:hi('Pmenu', s:palette_black, s:palette_bg3)
+call s:hi('PmenuSbar', 'NONE', s:palette_bg3)
+call s:hi('PmenuSel', s:palette_white, s:palette_bright_cyan)
+call s:hi('PmenuThumb', 'NONE', s:palette_black)
 call s:hi('PreCondit', s:palette_bright_magenta)
-call s:hi('PreProc', s:palette_magenta)
-call s:hi('Question', s:palette_fg, 'NONE', 'bold')
-call s:hi('QuickFixLine', 'NONE', s:brightness(s:palette_bg, 32), 'bold,underline')
-call s:hi('Repeat', s:palette_yellow)
-call s:hi('Search', 'NONE', s:brightness(s:palette_bright_yellow, 160))
+call s:hi('PreProc', s:palette_bright_magenta)
+call s:hi('Question', s:palette_blue, 'NONE', 'bold')
+call s:hi('QuickFixLine', 'NONE', s:palette_bright_white, 'bold,underline')
+call s:hi('Repeat', s:palette_bright_blue)
+call s:hi('Search', 'NONE', s:palette_bright_yellow)
 call s:hi('SignColumn', s:palette_fg, 'NONE')
 call s:hi('Special', s:palette_red)
 call s:hi('SpecialChar', s:palette_red)
 call s:hi('SpecialComment', s:palette_red)
-call s:hi('SpecialKey', s:brightness(s:palette_bg, -64))
+call s:hi('SpecialKey', s:palette_fg2)
 call s:hi('SpellBad', s:palette_bright_red, 'NONE', 'undercurl')
 call s:hi('SpellCap', s:palette_bright_yellow, 'NONE', 'undercurl')
 call s:hi('SpellLocal', s:palette_bright_green, 'NONE', 'undercurl')
-call s:hi('SpellRare', s:palette_bright_cyan, 'NONE', 'undercurl')
-call s:hi('Statement', s:palette_yellow)
-call s:hi('StatusLine', s:palette_black, s:brightness(s:palette_bg, 32), 'underline')
-call s:hi('StatusLineNC', s:palette_bright_black, s:brightness(s:palette_bg, 16), 'underline')
-call s:hi('StatusLineTerm', s:palette_black, s:brightness(s:palette_bg, 32), 'underline')
-call s:hi('StatusLineTermNC', s:palette_bright_black, s:brightness(s:palette_bg, 16), 'underline')
-call s:hi('StorageClass', s:palette_bright_green, 'NONE', 'italic')
-call s:hi('String', s:palette_bright_cyan)
-call s:hi('Structure', s:palette_green, 'NONE', 'italic')
-call s:hi('Substitute', s:palette_bright_white, s:palette_black)
-call s:hi('TabLine', s:palette_bright_black, s:brightness(s:palette_bg, 16), 'underline')
-call s:hi('TabLineFill', s:palette_bright_black, s:brightness(s:palette_bg, 16), 'underline')
-call s:hi('TabLineSel', s:palette_black, s:brightness(s:palette_bg, 32), 'underline')
-call s:hi('Tag', s:palette_bright_blue)
+call s:hi('SpellRare', s:palette_magenta, 'NONE', 'undercurl')
+call s:hi('Statement', s:palette_bright_blue)
+call s:hi('StatusLine', s:palette_black, s:palette_bg3, 'underline')
+call s:hi('StatusLineNC', s:palette_bright_black, s:blend(s:palette_bg3, s:palette_bg, 0.6), 'underline')
+call s:hi('StatusLineTerm', s:palette_black, s:palette_bg3, 'underline')
+call s:hi('StatusLineTermNC', s:palette_bright_black, s:blend(s:palette_bg3, s:palette_bg, 0.6), 'underline')
+call s:hi('StorageClass', s:palette_cyan, 'NONE', 'italic')
+call s:hi('String', s:palette_green)
+call s:hi('Structure', s:palette_cyan, 'NONE', 'italic')
+call s:hi('Substitute', s:palette_white, s:palette_black)
+call s:hi('TabLine', s:palette_bright_black, s:blend(s:palette_bg3, s:palette_bg, 0.6), 'underline')
+call s:hi('TabLineFill', s:palette_bright_black, s:blend(s:palette_bg3, s:palette_bg, 0.6), 'underline')
+call s:hi('TabLineSel', s:palette_black, s:palette_bg3, 'underline,bold')
+call s:hi('Tag', s:palette_blue, 'NONE', 'underline')
 call s:hi('Terminal', s:palette_fg, s:palette_bg)
 call s:hi('Title', s:palette_red)
-call s:hi('Todo', 'NONE', s:palette_white, 'bold,underline')
-call s:hi('Type', s:palette_green, 'NONE', 'italic')
-call s:hi('Typedef', s:palette_green, 'NONE', 'italic')
-call s:hi('Underlined', s:palette_bright_blue, 'NONE', 'underline')
-call s:hi('VertSplit', s:palette_white)
-call s:hi('Visual', 'NONE', s:brightness(s:palette_bg, 24))
-call s:hi('VisualNOS', 'NONE', s:brightness(s:palette_bg, 24))
-call s:hi('WarningMsg', s:palette_bright_yellow, 'NONE', 'bold,reverse')
+call s:hi('Todo', 'NONE', s:palette_bg3, 'bold,underline')
+call s:hi('Type', s:palette_cyan, 'NONE', 'italic')
+call s:hi('Typedef', s:palette_cyan, 'NONE', 'italic')
+call s:hi('Underlined', s:palette_blue, 'NONE', 'underline')
+call s:hi('VertSplit', s:palette_bright_black)
+call s:hi('Visual', 'NONE', s:palette_white)
+call s:hi('VisualNOS', 'NONE', s:palette_white)
+call s:hi('WarningMsg', s:palette_yellow, 'NONE', 'bold,reverse')
 call s:hi('WildMenu', 'NONE', 'NONE', 'reverse')
-call s:hi('Whitespace', s:brightness(s:palette_bg, -16))
+call s:hi('Whitespace', s:palette_fg2)
 hi! link lCursor Cursor
 hi! link CursorIM Cursor
 hi! link TermCursor Cursor
 hi! link CursorLine CursorColumn
 
 " Lsp
-call s:hi('LspDiagnosticsError', s:blend(s:palette_bg, s:palette_bright_red, 0.35), 'NONE', 'undercurl,italic')
+call s:hi('LspDiagnosticsError', s:blend(s:palette_bg, s:palette_bright_red, 0.5), 'NONE', 'undercurl,italic')
 call s:hi('LspDiagnosticsErrorSign', s:palette_bright_red, s:blend(s:palette_bg, s:palette_red, 0.1), 'bold,italic')
-call s:hi('LspDiagnosticsErrorFloating', s:palette_red)
-call s:hi('LspDiagnosticsWarning', s:blend(s:palette_bg, s:palette_yellow, 0.3), 'NONE', 'undercurl,italic')
-call s:hi('LspDiagnosticsWarningSign', s:palette_yellow, 'NONE', 'italic')
+call s:hi('LspDiagnosticsErrorFloating', s:palette_bright_red)
+call s:hi('LspDiagnosticsWarning', s:blend(s:palette_bg, s:palette_yellow, 0.6), 'NONE', 'undercurl,italic')
+call s:hi('LspDiagnosticsWarningSign', s:palette_yellow, s:blend(s:palette_bg, s:palette_yellow, 0.1), 'italic')
 call s:hi('LspDiagnosticsWarningFloating', s:palette_yellow)
-call s:hi('LspDiagnosticsInformation', s:blend(s:palette_bg, s:palette_bright_cyan, 0.4), 'italic')
-call s:hi('LspDiagnosticsInformationSign', s:palette_bright_cyan, 'NONE', 'italic')
-call s:hi('LspDiagnosticsInformationFloating', s:palette_bright_cyan)
-call s:hi('LspDiagnosticsHint', s:blend(s:palette_bg, s:palette_bright_white, 0.55), 'NONE', 'italic')
-call s:hi('LspDiagnosticsHintSign', s:blend(s:palette_bg, s:palette_bright_white, 0.8), 'NONE', 'italic')
-call s:hi('LspDiagnosticsHintFloating', s:palette_black)
+call s:hi('LspDiagnosticsInformation', s:blend(s:palette_bg, s:palette_bright_blue, 0.7), 'italic')
+call s:hi('LspDiagnosticsInformationSign', s:palette_bright_blue, s:blend(s:palette_bg, s:palette_bright_blue, 0.1), 'italic')
+call s:hi('LspDiagnosticsInformationFloating', s:palette_bright_blue)
+call s:hi('LspDiagnosticsHint', s:blend(s:palette_bg, s:palette_magenta, 0.6), 'NONE', 'italic')
+call s:hi('LspDiagnosticsHintSign', s:blend(s:palette_bg, s:palette_magenta, 0.4), 'NONE', 'italic')
+call s:hi('LspDiagnosticsHintFloating', s:palette_magenta)
 " call s:hi('LspReferenceText')
 " call s:hi('LspReferenceRead')
 " call s:hi('LspReferenceWrite')
-
-" Help Doc
-call s:hi('helpExample', 'NONE', s:brightness(s:palette_bg, -8))
-hi! link helpCommand helpExample
 
 " Health
 call s:hi('healthSuccess', s:palette_bright_white, s:palette_bright_green)
