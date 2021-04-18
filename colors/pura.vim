@@ -35,17 +35,6 @@ function! s:hi(group, ...)
     exec printf('hi %s guifg=%s guibg=%s gui=%s', a:group, get(a:, 1, 'NONE'), get(a:, 2, 'NONE'), get(a:, 3, 'NONE'))
 endfunction
 
-function! s:brightness(hex, amt)
-    let r = str2nr(a:hex[1:2], 16)
-    let g = str2nr(a:hex[3:4], 16)
-    let b = str2nr(a:hex[5:6], 16)
-
-    let rr = printf('%02x', float2nr(round(s:min(s:max(0, r + a:amt), 255))))
-    let gg = printf('%02x', float2nr(round(s:min(s:max(0, g + a:amt), 255))))
-    let bb = printf('%02x', float2nr(round(s:min(s:max(0, b + a:amt), 255))))
-    return '#' . rr . gg . bb
-endfunction
-
 function! s:blend(c1, c2, ratio)
     let iratio = 1 - a:ratio
 
