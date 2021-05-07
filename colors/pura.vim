@@ -102,6 +102,7 @@ let g:terminal_color_15 = s:palette_bright_white
 
 call s:hi('Boolean', s:palette_red)
 call s:hi('Character', s:palette_green)
+call s:hi('ColorColumn', 'NONE', s:palette_cl)
 call s:hi('Comment', s:palette_bright_black, 'NONE', 'italic')
 call s:hi('Conditional', s:palette_bright_blue)
 call s:hi('Constant', s:palette_bright_green)
@@ -188,7 +189,7 @@ hi! link TermCursor Cursor
 hi! link CursorLine CursorColumn
 
 " Lsp
-call s:hi('LspDiagnosticsError', s:blend(s:palette_bg, s:palette_bright_red, 0.5), 'NONE', 'undercurl,italic')
+call s:hi('LspDiagnosticsError', s:blend(s:palette_bg, s:palette_bright_red, 0.4), 'NONE', 'undercurl,italic')
 call s:hi('LspDiagnosticsErrorSign', s:palette_bright_red, s:blend(s:palette_bg, s:palette_red, 0.1), 'bold,italic')
 call s:hi('LspDiagnosticsErrorFloating', s:palette_bright_red)
 call s:hi('LspDiagnosticsWarning', s:blend(s:palette_bg, s:palette_yellow, 0.6), 'NONE', 'undercurl,italic')
