@@ -56,6 +56,7 @@ endfunction
 
 let s:palette_bg   = '#bdbdc1'
 let s:palette_bg2  = '#dddde1'
+let s:palette_bg3  = '#e9e8e9'
 let s:palette_fg   = '#000000'
 let s:palette_fg2  = '#8d8d90'
 let s:palette_cl   = '#c7c7cc'
@@ -139,8 +140,8 @@ call s:hi('NonText', s:palette_fg2)
 call s:hi('Normal', s:palette_fg, s:palette_bg)
 call s:hi('Number', s:palette_red)
 call s:hi('Operator', 'NONE')
-call s:hi('Pmenu', s:palette_black, s:palette_bg2)
-call s:hi('PmenuSbar', 'NONE', s:palette_bg2)
+call s:hi('Pmenu', s:palette_black, s:palette_bg3)
+call s:hi('PmenuSbar', 'NONE', s:palette_bg3)
 call s:hi('PmenuSel', s:palette_white, s:palette_bright_cyan)
 call s:hi('PmenuThumb', 'NONE', s:palette_black)
 call s:hi('PreCondit', s:palette_bright_magenta)
