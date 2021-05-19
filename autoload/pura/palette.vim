@@ -1,0 +1,26 @@
+let pura#palette#bg            = '#bdbdc1'
+let pura#palette#bg2           = '#dddde1'
+let pura#palette#bg3           = '#e9e8e9'
+let pura#palette#fg            = '#000000'
+let pura#palette#fg2           = '#8d8d90'
+let pura#palette#cursor_line   = '#c7c7cc'
+
+" Normal colors
+let pura#palette#black    = '#000000'
+let pura#palette#red      = '#ab1239'
+let pura#palette#green    = '#3f602b'
+let pura#palette#yellow   = '#8e4000'
+let pura#palette#blue     = '#000ead'
+let pura#palette#magenta  = '#5600d6'
+let pura#palette#cyan     = '#006c7f'
+let pura#palette#white    = '#fff2eb'
+
+" Bright colors
+let pura#palette#bright_black   = '#454554'
+let pura#palette#bright_red     = '#d30f45'
+let pura#palette#bright_green   = '#35840b'
+let pura#palette#bright_yellow  = '#f4ff37'
+let pura#palette#bright_blue    = '#2e46ff'
+let pura#palette#bright_magenta = '#8800a3'
+let pura#palette#bright_cyan    = '#2f9392'
+let pura#palette#bright_white   = '#ffffff'

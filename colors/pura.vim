@@ -17,203 +17,139 @@ endif
 
 let g:colors_name = 'pura'
 
-function! s:min(a, b)
-    if a:a > a:b
-        return a:b
-    endif
-    return a:a
-endfunction
-
-function! s:max(a, b)
-    if a:a > a:b
-        return a:a
-    endif
-    return a:b
-endfunction
-
-function! s:hi(group, ...)
-    exec printf('hi %s guifg=%s guibg=%s gui=%s', a:group, get(a:, 1, 'NONE'), get(a:, 2, 'NONE'), get(a:, 3, 'NONE'))
-endfunction
-
-function! s:blend(c1, c2, ratio)
-    let iratio = 1 - a:ratio
-
-    let r1 = str2nr(a:c1[1:2], 16)
-    let g1 = str2nr(a:c1[3:4], 16)
-    let b1 = str2nr(a:c1[5:6], 16)
-
-    let r2 = str2nr(a:c2[1:2], 16)
-    let g2 = str2nr(a:c2[3:4], 16)
-    let b2 = str2nr(a:c2[5:6], 16)
-
-    let r = printf('%02x', float2nr(r1 * iratio + r2 * a:ratio))
-    let g = printf('%02x', float2nr(g1 * iratio + g2 * a:ratio))
-    let b = printf('%02x', float2nr(b1 * iratio + b2 * a:ratio))
-    return '#' . r . g . b
-endfunction
-
-" Palette ======================================================================
-
-let s:palette_bg   = '#bdbdc1'
-let s:palette_bg2  = '#dddde1'
-let s:palette_bg3  = '#e9e8e9'
-let s:palette_fg   = '#000000'
-let s:palette_fg2  = '#8d8d90'
-let s:palette_cl   = '#c7c7cc'
-
-" Normal colors
-let s:palette_black    = '#000000'
-let s:palette_red      = '#ab1239'
-let s:palette_green    = '#3f602b'
-let s:palette_yellow   = '#8e4000'
-let s:palette_blue     = '#000ead'
-let s:palette_magenta  = '#5600d6'
-let s:palette_cyan     = '#006c7f'
-let s:palette_white    = '#fff2eb'
-
-" Bright colors
-let s:palette_bright_black   = '#454554'
-let s:palette_bright_red     = '#d30f45'
-let s:palette_bright_green   = '#35840b'
-let s:palette_bright_yellow  = '#f4ff37'
-let s:palette_bright_blue    = '#2e46ff'
-let s:palette_bright_magenta = '#8800a3'
-let s:palette_bright_cyan    = '#2f9392'
-let s:palette_bright_white   = '#ffffff'
-
 " Terminal colors
-let g:terminal_color_0  = s:palette_black
-let g:terminal_color_1  = s:palette_red
-let g:terminal_color_2  = s:palette_green
-let g:terminal_color_3  = s:palette_yellow
-let g:terminal_color_4  = s:palette_blue
-let g:terminal_color_5  = s:palette_magenta
-let g:terminal_color_6  = s:palette_cyan
-let g:terminal_color_7  = s:palette_white
-let g:terminal_color_8  = s:palette_bright_black
-let g:terminal_color_9  = s:palette_bright_red
-let g:terminal_color_10 = s:palette_bright_green
-let g:terminal_color_11 = s:palette_bright_yellow
-let g:terminal_color_12 = s:palette_bright_blue
-let g:terminal_color_13 = s:palette_bright_magenta
-let g:terminal_color_14 = s:palette_bright_cyan
-let g:terminal_color_15 = s:palette_bright_white
+let g:terminal_color_0  = pura#palette#black
+let g:terminal_color_1  = pura#palette#red
+let g:terminal_color_2  = pura#palette#green
+let g:terminal_color_3  = pura#palette#yellow
+let g:terminal_color_4  = pura#palette#blue
+let g:terminal_color_5  = pura#palette#magenta
+let g:terminal_color_6  = pura#palette#cyan
+let g:terminal_color_7  = pura#palette#white
+let g:terminal_color_8  = pura#palette#bright_black
+let g:terminal_color_9  = pura#palette#bright_red
+let g:terminal_color_10 = pura#palette#bright_green
+let g:terminal_color_11 = pura#palette#bright_yellow
+let g:terminal_color_12 = pura#palette#bright_blue
+let g:terminal_color_13 = pura#palette#bright_magenta
+let g:terminal_color_14 = pura#palette#bright_cyan
+let g:terminal_color_15 = pura#palette#bright_white
 
 " Scheme =======================================================================
 
-call s:hi('Boolean', s:palette_red)
-call s:hi('Character', s:palette_green)
-call s:hi('ColorColumn', 'NONE', s:palette_cl)
-call s:hi('Comment', s:palette_bright_black, 'NONE', 'italic')
-call s:hi('Conditional', s:palette_bright_blue)
-call s:hi('Constant', s:palette_bright_green)
-call s:hi('Cursor', 'NONE', 'NONE', 'reverse')
-call s:hi('CursorColumn', 'NONE', s:palette_cl)
-call s:hi('CursorLineNr', s:palette_black, s:palette_bg2, 'bold')
-call s:hi('Debug', s:palette_red, 'NONE', 'bold')
-call s:hi('Define', s:palette_bright_magenta)
-call s:hi('DiffAdd', 'NONE', s:blend(s:palette_bg, s:palette_bright_green, 0.3))
-call s:hi('DiffDelete', 'NONE', s:blend(s:palette_bg, s:palette_bright_red, 0.3))
-call s:hi('DiffChange', 'NONE', s:blend(s:palette_bg, s:palette_bright_yellow, 0.3))
-call s:hi('DiffText', 'NONE', s:blend(s:palette_bg, s:palette_bright_green, 0.3), 'bold')
-call s:hi('Directory', s:palette_blue)
-call s:hi('EndOfBuffer', 'bg')
-call s:hi('Error', s:palette_bright_white, s:palette_bright_red, 'bold')
-call s:hi('ErrorMsg', s:palette_bright_red, 'NONE', 'bold')
-call s:hi('Exception', s:palette_bright_red)
-call s:hi('Float', s:palette_red)
-call s:hi('Folded', s:palette_white)
-call s:hi('FoldColumn', 'NONE')
-call s:hi('Function', s:palette_blue)
-call s:hi('Identifier', s:palette_blue)
-call s:hi('Ignore', s:palette_bright_black, 'NONE', 'italic')
-call s:hi('IncSearch', s:palette_yellow, s:palette_bright_yellow, 'bold,underline')
-call s:hi('Include', s:palette_bright_magenta)
-call s:hi('Keyword', s:palette_magenta)
-call s:hi('Label', s:palette_yellow)
-call s:hi('LineNr', s:palette_fg2)
-call s:hi('Macro', s:palette_bright_magenta)
-call s:hi('MatchParen', 'NONE', 'NONE', 'bold,underline')
-call s:hi('ModeMsg', s:palette_white, s:palette_bright_blue)
-call s:hi('MoreMsg', s:palette_blue)
-call s:hi('NonText', s:palette_fg2)
-call s:hi('Normal', s:palette_fg, s:palette_bg)
-call s:hi('Number', s:palette_red)
-call s:hi('Operator', 'NONE')
-call s:hi('Pmenu', s:palette_black, s:palette_bg3)
-call s:hi('PmenuSbar', 'NONE', s:palette_bg3)
-call s:hi('PmenuSel', s:palette_white, s:palette_bright_cyan)
-call s:hi('PmenuThumb', 'NONE', s:palette_black)
-call s:hi('PreCondit', s:palette_bright_magenta)
-call s:hi('PreProc', s:palette_bright_magenta)
-call s:hi('Question', s:palette_blue, 'NONE', 'bold')
-call s:hi('QuickFixLine', 'NONE', s:palette_bright_white, 'bold,underline')
-call s:hi('Repeat', s:palette_bright_blue)
-call s:hi('Search', 'NONE', s:palette_bright_yellow)
-call s:hi('SignColumn', s:palette_fg, 'NONE')
-call s:hi('Special', s:palette_red)
-call s:hi('SpecialChar', s:palette_red)
-call s:hi('SpecialComment', s:palette_red)
-call s:hi('SpecialKey', s:palette_fg2)
-call s:hi('SpellBad', s:palette_bright_red, 'NONE', 'undercurl')
-call s:hi('SpellCap', s:palette_bright_yellow, 'NONE', 'undercurl')
-call s:hi('SpellLocal', s:palette_bright_green, 'NONE', 'undercurl')
-call s:hi('SpellRare', s:palette_magenta, 'NONE', 'undercurl')
-call s:hi('Statement', s:palette_bright_blue)
-call s:hi('StatusLine', s:palette_black, s:palette_bg2, 'underline')
-call s:hi('StatusLineNC', s:palette_bright_black, s:blend(s:palette_bg2, s:palette_bg, 0.6), 'underline')
-call s:hi('StatusLineTerm', s:palette_black, s:palette_bg2, 'underline')
-call s:hi('StatusLineTermNC', s:palette_bright_black, s:blend(s:palette_bg2, s:palette_bg, 0.6), 'underline')
-call s:hi('StorageClass', s:palette_cyan, 'NONE', 'italic')
-call s:hi('String', s:palette_green)
-call s:hi('Structure', s:palette_cyan, 'NONE', 'italic')
-call s:hi('Substitute', s:palette_white, s:palette_black)
-call s:hi('TabLine', s:palette_bright_black, s:blend(s:palette_bg2, s:palette_bg, 0.6), 'underline')
-call s:hi('TabLineFill', s:palette_bright_black, s:blend(s:palette_bg2, s:palette_bg, 0.6), 'underline')
-call s:hi('TabLineSel', s:palette_black, s:palette_bg2, 'underline,bold')
-call s:hi('Tag', s:palette_blue, 'NONE', 'underline')
-call s:hi('Terminal', s:palette_fg, s:palette_bg)
-call s:hi('Title', s:palette_red)
-call s:hi('Todo', 'NONE', s:palette_bg2, 'bold,underline')
-call s:hi('Type', s:palette_cyan, 'NONE', 'italic')
-call s:hi('Typedef', s:palette_cyan, 'NONE', 'italic')
-call s:hi('Underlined', s:palette_blue, 'NONE', 'underline')
-call s:hi('VertSplit', s:palette_bright_black)
-call s:hi('Visual', 'NONE', s:palette_white)
-call s:hi('VisualNOS', 'NONE', s:palette_white)
-call s:hi('WarningMsg', s:palette_yellow, 'NONE', 'bold,reverse')
-call s:hi('WildMenu', 'NONE', 'NONE', 'reverse')
-call s:hi('Whitespace', s:palette_fg2)
+call pura#hi('Boolean', pura#palette#red)
+call pura#hi('Character', pura#palette#green)
+call pura#hi('ColorColumn', 'NONE', pura#palette#cursor_line)
+call pura#hi('Comment', pura#palette#bright_black, 'NONE', 'italic')
+call pura#hi('Conditional', pura#palette#bright_blue)
+call pura#hi('Constant', pura#palette#bright_green)
+call pura#hi('Cursor', 'NONE', 'NONE', 'reverse')
+call pura#hi('CursorColumn', 'NONE', pura#palette#cursor_line)
+call pura#hi('CursorLineNr', pura#palette#black, pura#palette#bg2, 'bold')
+call pura#hi('Debug', pura#palette#red, 'NONE', 'bold')
+call pura#hi('Define', pura#palette#bright_magenta)
+call pura#hi('DiffAdd', 'NONE', pura#blend(pura#palette#bg, pura#palette#bright_green, 0.3))
+call pura#hi('DiffDelete', 'NONE', pura#blend(pura#palette#bg, pura#palette#bright_red, 0.3))
+call pura#hi('DiffChange', 'NONE', pura#blend(pura#palette#bg, pura#palette#bright_yellow, 0.3))
+call pura#hi('DiffText', 'NONE', pura#blend(pura#palette#bg, pura#palette#bright_green, 0.3), 'bold')
+call pura#hi('Directory', pura#palette#blue)
+call pura#hi('EndOfBuffer', 'bg')
+call pura#hi('Error', pura#palette#bright_white, pura#palette#bright_red, 'bold')
+call pura#hi('ErrorMsg', pura#palette#bright_red, 'NONE', 'bold')
+call pura#hi('Exception', pura#palette#bright_red)
+call pura#hi('Float', pura#palette#red)
+call pura#hi('Folded', pura#palette#white)
+call pura#hi('FoldColumn', 'NONE')
+call pura#hi('Function', pura#palette#blue)
+call pura#hi('Identifier', pura#palette#blue)
+call pura#hi('Ignore', pura#palette#bright_black, 'NONE', 'italic')
+call pura#hi('IncSearch', pura#palette#yellow, pura#palette#bright_yellow, 'bold,underline')
+call pura#hi('Include', pura#palette#bright_magenta)
+call pura#hi('Keyword', pura#palette#magenta)
+call pura#hi('Label', pura#palette#yellow)
+call pura#hi('LineNr', pura#palette#fg2)
+call pura#hi('Macro', pura#palette#bright_magenta)
+call pura#hi('MatchParen', 'NONE', 'NONE', 'bold,underline')
+call pura#hi('ModeMsg', pura#palette#white, pura#palette#bright_blue)
+call pura#hi('MoreMsg', pura#palette#blue)
+call pura#hi('NonText', pura#palette#fg2)
+call pura#hi('Normal', pura#palette#fg, pura#palette#bg)
+call pura#hi('Number', pura#palette#red)
+call pura#hi('Operator', 'NONE')
+call pura#hi('Pmenu', pura#palette#black, pura#palette#bg3)
+call pura#hi('PmenuSbar', 'NONE', pura#palette#bg3)
+call pura#hi('PmenuSel', pura#palette#white, pura#palette#bright_cyan)
+call pura#hi('PmenuThumb', 'NONE', pura#palette#black)
+call pura#hi('PreCondit', pura#palette#bright_magenta)
+call pura#hi('PreProc', pura#palette#bright_magenta)
+call pura#hi('Question', pura#palette#blue, 'NONE', 'bold')
+call pura#hi('QuickFixLine', 'NONE', pura#palette#bright_white, 'bold,underline')
+call pura#hi('Repeat', pura#palette#bright_blue)
+call pura#hi('Search', 'NONE', pura#palette#bright_yellow)
+call pura#hi('SignColumn', pura#palette#fg, 'NONE')
+call pura#hi('Special', pura#palette#red)
+call pura#hi('SpecialChar', pura#palette#red)
+call pura#hi('SpecialComment', pura#palette#red)
+call pura#hi('SpecialKey', pura#palette#fg2)
+call pura#hi('SpellBad', pura#palette#bright_red, 'NONE', 'undercurl')
+call pura#hi('SpellCap', pura#palette#bright_yellow, 'NONE', 'undercurl')
+call pura#hi('SpellLocal', pura#palette#bright_green, 'NONE', 'undercurl')
+call pura#hi('SpellRare', pura#palette#magenta, 'NONE', 'undercurl')
+call pura#hi('Statement', pura#palette#bright_blue)
+call pura#hi('StatusLine', pura#palette#black, pura#palette#bg2, 'underline')
+call pura#hi('StatusLineNC', pura#palette#bright_black, pura#blend(pura#palette#bg2, pura#palette#bg, 0.6), 'underline')
+call pura#hi('StatusLineTerm', pura#palette#black, pura#palette#bg2, 'underline')
+call pura#hi('StatusLineTermNC', pura#palette#bright_black, pura#blend(pura#palette#bg2, pura#palette#bg, 0.6), 'underline')
+call pura#hi('StorageClass', pura#palette#cyan, 'NONE', 'italic')
+call pura#hi('String', pura#palette#green)
+call pura#hi('Structure', pura#palette#cyan, 'NONE', 'italic')
+call pura#hi('Substitute', pura#palette#white, pura#palette#black)
+call pura#hi('TabLine', pura#palette#bright_black, pura#blend(pura#palette#bg2, pura#palette#bg, 0.6), 'underline')
+call pura#hi('TabLineFill', pura#palette#bright_black, pura#blend(pura#palette#bg2, pura#palette#bg, 0.6), 'underline')
+call pura#hi('TabLineSel', pura#palette#black, pura#palette#bg2, 'underline,bold')
+call pura#hi('Tag', pura#palette#blue, 'NONE', 'underline')
+call pura#hi('Terminal', pura#palette#fg, pura#palette#bg)
+call pura#hi('Title', pura#palette#red)
+call pura#hi('Todo', 'NONE', pura#palette#bg2, 'bold,underline')
+call pura#hi('Type', pura#palette#cyan, 'NONE', 'italic')
+call pura#hi('Typedef', pura#palette#cyan, 'NONE', 'italic')
+call pura#hi('Underlined', pura#palette#blue, 'NONE', 'underline')
+call pura#hi('VertSplit', pura#palette#bright_black)
+call pura#hi('Visual', 'NONE', pura#palette#white)
+call pura#hi('VisualNOS', 'NONE', pura#palette#white)
+call pura#hi('WarningMsg', pura#palette#yellow, 'NONE', 'bold,reverse')
+call pura#hi('WildMenu', 'NONE', 'NONE', 'reverse')
+call pura#hi('Whitespace', pura#palette#fg2)
 hi! link lCursor Cursor
 hi! link CursorIM Cursor
 hi! link TermCursor Cursor
 hi! link CursorLine CursorColumn
 
 " Lsp
-call s:hi('LspDiagnosticsError', s:blend(s:palette_bg, s:palette_bright_red, 0.4), 'NONE', 'undercurl,italic')
-call s:hi('LspDiagnosticsErrorSign', s:palette_bright_red, s:blend(s:palette_bg, s:palette_red, 0.1), 'bold,italic')
-call s:hi('LspDiagnosticsErrorFloating', s:palette_bright_red)
-call s:hi('LspDiagnosticsWarning', s:blend(s:palette_bg, s:palette_yellow, 0.6), 'NONE', 'undercurl,italic')
-call s:hi('LspDiagnosticsWarningSign', s:palette_yellow, s:blend(s:palette_bg, s:palette_yellow, 0.1), 'italic')
-call s:hi('LspDiagnosticsWarningFloating', s:palette_yellow)
-call s:hi('LspDiagnosticsInformation', s:blend(s:palette_bg, s:palette_bright_blue, 0.7), 'italic')
-call s:hi('LspDiagnosticsInformationSign', s:palette_bright_blue, s:blend(s:palette_bg, s:palette_bright_blue, 0.1), 'italic')
-call s:hi('LspDiagnosticsInformationFloating', s:palette_bright_blue)
-call s:hi('LspDiagnosticsHint', s:palette_fg2, 'NONE', 'italic,undercurl')
-call s:hi('LspDiagnosticsHintSign', s:palette_fg2, s:blend(s:palette_bg, s:palette_fg2, 0.2), 'italic,bold')
-call s:hi('LspDiagnosticsHintFloating', s:palette_fg)
-" call s:hi('LspReferenceText')
-" call s:hi('LspReferenceRead')
-" call s:hi('LspReferenceWrite')
+call pura#hi('LspDiagnosticsError', pura#blend(pura#palette#bg, pura#palette#bright_red, 0.4), 'NONE', 'undercurl,italic')
+call pura#hi('LspDiagnosticsErrorSign', pura#palette#bright_red, pura#blend(pura#palette#bg, pura#palette#red, 0.1), 'bold,italic')
+call pura#hi('LspDiagnosticsErrorFloating', pura#palette#bright_red)
+call pura#hi('LspDiagnosticsWarning', pura#blend(pura#palette#bg, pura#palette#yellow, 0.6), 'NONE', 'undercurl,italic')
+call pura#hi('LspDiagnosticsWarningSign', pura#palette#yellow, pura#blend(pura#palette#bg, pura#palette#yellow, 0.1), 'italic')
+call pura#hi('LspDiagnosticsWarningFloating', pura#palette#yellow)
+call pura#hi('LspDiagnosticsInformation', pura#blend(pura#palette#bg, pura#palette#bright_blue, 0.7), 'italic')
+call pura#hi('LspDiagnosticsInformationSign', pura#palette#bright_blue, pura#blend(pura#palette#bg, pura#palette#bright_blue, 0.1), 'italic')
+call pura#hi('LspDiagnosticsInformationFloating', pura#palette#bright_blue)
+call pura#hi('LspDiagnosticsHint', pura#palette#fg2, 'NONE', 'italic,undercurl')
+call pura#hi('LspDiagnosticsHintSign', pura#palette#fg2, pura#blend(pura#palette#bg, pura#palette#fg2, 0.2), 'italic,bold')
+call pura#hi('LspDiagnosticsHintFloating', pura#palette#fg)
+" call pura#hi('LspReferenceText')
+" call pura#hi('LspReferenceRead')
+" call pura#hi('LspReferenceWrite')
 
 " Health
-call s:hi('healthSuccess', s:palette_bright_white, s:palette_bright_green)
-call s:hi('healthWarning', s:palette_bright_white, s:palette_yellow)
-call s:hi('healthError', s:palette_bright_white, s:palette_bright_red)
+call pura#hi('healthSuccess', pura#palette#bright_white, pura#palette#bright_green)
+call pura#hi('healthWarning', pura#palette#bright_white, pura#palette#yellow)
+call pura#hi('healthError', pura#palette#bright_white, pura#palette#bright_red)
 
 " Misc
-call s:hi('diffRemoved', s:palette_red, s:blend(s:palette_bg, s:palette_bright_red, 0.2))
-call s:hi('diffAdded', s:palette_green, s:blend(s:palette_bg, s:palette_bright_green, 0.2))
+call pura#hi('diffRemoved', pura#palette#red, pura#blend(pura#palette#bg, pura#palette#bright_red, 0.2))
+call pura#hi('diffAdded', pura#palette#green, pura#blend(pura#palette#bg, pura#palette#bright_green, 0.2))
 
 " TypeScript
 hi! link typescriptImport Include
