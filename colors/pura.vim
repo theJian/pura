@@ -1,7 +1,7 @@
 "===============================================================================
 " Theme: pura
 " URL: https://github.com/theJian/pura
-" Maintainer: theJian <thejianmail@gmail.com>
+" Maintainer: Tan Kian <thejianmail@gmail.com>
 " License: MIT
 "===============================================================================
 
@@ -35,4 +35,4 @@ let g:terminal_color_13 = pura#palette#bright_magenta
 let g:terminal_color_14 = pura#palette#bright_cyan
 let g:terminal_color_15 = pura#palette#bright_white
 
-runtime! colors/schemes/*.vim
+execute 'luafile' expand('<sfile>:p:h').'/colorscheme.lua'
