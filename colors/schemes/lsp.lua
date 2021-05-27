@@ -1,0 +1,17 @@
+-- Lsp
+hi('LspDiagnosticsError', blend(bright_red, 40), none, 'undercurl,italic')
+hi('LspDiagnosticsErrorSign', bright_red, blend(red, 10), 'bold,italic')
+hi('LspDiagnosticsErrorFloating', bright_red)
+hi('LspDiagnosticsWarning', blend(yellow, 60), none, 'undercurl,italic')
+hi('LspDiagnosticsWarningSign', yellow, blend(yellow, 10), 'italic')
+hi('LspDiagnosticsWarningFloating', yellow)
+hi('LspDiagnosticsInformation', blend(bright_blue, 70), 'italic')
+hi('LspDiagnosticsInformationSign', bright_blue, blend(bright_blue, 10), 'italic')
+hi('LspDiagnosticsInformationFloating', bright_blue)
+hi('LspDiagnosticsHint', fg2, none, 'italic,undercurl')
+hi('LspDiagnosticsHintSign', fg2, blend(fg2, 20), 'italic,bold')
+hi('LspDiagnosticsHintFloating', fg)
+-- hi('LspReferenceText')
+-- hi('LspReferenceRead')
+-- hi('LspReferenceWrite')
+

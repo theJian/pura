@@ -1,3 +1,8 @@
+local bit = require 'bit'
+
+local tohex, bor, lshift, floor = bit.tohex, bit.bor, bit.lshift, math.floor
+
+local none           = 'NONE'
 local bg             = '#bdbdc1'
 local bg2            = '#dddde1'
 local bg3            = '#e9e8e9'
@@ -25,18 +30,59 @@ local bright_magenta = '#8800a3'
 local bright_cyan    = '#2f9392'
 local bright_white   = '#ffffff'
 
-local function hi(group, fg, bg, ft)
-	vim.cmd(string.format('hi %s guifg=%s guibg=%s gui=%s',
+-- Terminal colors
+vim.g.terminal_color_0  = black
+vim.g.terminal_color_1  = red
+vim.g.terminal_color_2  = green
+vim.g.terminal_color_3  = yellow
+vim.g.terminal_color_4  = blue
+vim.g.terminal_color_5  = magenta
+vim.g.terminal_color_6  = cyan
+vim.g.terminal_color_7  = white
+vim.g.terminal_color_8  = bright_black
+vim.g.terminal_color_9  = bright_red
+vim.g.terminal_color_10 = bright_green
+vim.g.terminal_color_11 = bright_yellow
+vim.g.terminal_color_12 = bright_blue
+vim.g.terminal_color_13 = bright_magenta
+vim.g.terminal_color_14 = bright_cyan
+vim.g.terminal_color_15 = bright_white
+
+local function hi(group, fg, bg, ft, sp)
+	vim.cmd(string.format('hi %s guifg=%s guibg=%s gui=%s guisp=%s',
 		group,
-		fg or 'NONE',
-		bg or 'NONE',
-		ft or 'NONE'
+		fg or none,
+		bg or none,
+		ft or none,
+		sp or none
 	))
+	if vim.g.pura_color_test then
+		vim.cmd(string.format('syn match %s "\'%s\'"', group, group))
+	end
 end
 
-local function blend(c1, c2, ratio)
-	-- TODO
-	return c1
+local function li(from, to)
+	vim.cmd(string.format('hi! link %s %s', from, to))
+end
+
+local function hex2rgb(hex)
+	local r, g, b = hex:sub(2, 3), hex:sub(4, 5), hex:sub(6, 7)
+	r, g, b = tonumber(r, 16), tonumber(g, 16), tonumber(b, 16)
+	return { r, g, b }
+end
+
+local function rgb2hex(r, g, b)
+	return '#'..tohex(bor(lshift(floor(r), 16), lshift(floor(g), 8), floor(b)), 6)
+end
+
+local function blend(color, weight)
+	local base_rgb = hex2rgb(bg)
+	local color_rgb = hex2rgb(color)
+	return rgb2hex(
+		base_rgb[1] + (color_rgb[1] - base_rgb[1]) * (weight / 100),
+		base_rgb[2] + (color_rgb[2] - base_rgb[2]) * (weight / 100),
+		base_rgb[3] + (color_rgb[3] - base_rgb[3]) * (weight / 100)
+	)
 end
 
 local function load(file)
@@ -64,7 +110,9 @@ local function load(file)
 		bright_cyan = bright_cyan,
 		bright_white = bright_white,
 		hi = hi,
+		li = li,
 		blend = blend,
+		none = none,
 		print = print,
 	}
 
