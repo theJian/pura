@@ -1,2 +1,6 @@
+hi('DiffAdd',           none,            blend(bright_green, 30))
+hi('DiffDelete',        none,            blend(bright_red, 30))
+hi('DiffChange',        none,            blend(bright_yellow, 30))
+hi('DiffText',          none,            blend(bright_green, 30),    'bold')
 hi('diffRemoved', red, blend(bright_red, 20))
 hi('diffAdded', green, blend(bright_green, 20))

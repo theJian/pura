@@ -1,5 +1,4 @@
 local bit = require 'bit'
-
 local tohex, bor, lshift, floor = bit.tohex, bit.bor, bit.lshift, math.floor
 
 local none           = 'NONE'
@@ -63,6 +62,9 @@ end
 
 local function li(from, to)
 	vim.cmd(string.format('hi! link %s %s', from, to))
+	if vim.g.pura_color_test then
+		vim.cmd(string.format('syn match %s "\'%s\'"', from, from))
+	end
 end
 
 local function hex2rgb(hex)
