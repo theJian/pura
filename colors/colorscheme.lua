@@ -2,7 +2,7 @@ local bit = require 'bit'
 local tohex, bor, lshift, floor = bit.tohex, bit.bor, bit.lshift, math.floor
 
 local none           = 'NONE'
-local bg             = '#bdbdc1'
+local bg             = '#bfbfc3'
 local bg2            = '#dddde1'
 local bg3            = '#e9e8e9'
 local fg             = '#000000'
@@ -11,8 +11,8 @@ local cursor_line    = '#c7c7cc'
 
 -- Normal colors
 local black          = '#000000'
-local red            = '#ab1239'
-local green          = '#3f602b'
+local red            = '#8a0f2e'
+local green          = '#3a5828'
 local yellow         = '#8e4000'
 local blue           = '#000ead'
 local magenta        = '#5600d6'
