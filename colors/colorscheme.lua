@@ -77,13 +77,17 @@ local function rgb2hex(r, g, b)
 	return '#'..tohex(bor(lshift(floor(r), 16), lshift(floor(g), 8), floor(b)), 6)
 end
 
+local function blend_channel(color1, color2, weight)
+	return color1 + (color2 - color1) * (weight / 100)
+end
+
 local function blend(color, weight)
 	local base_rgb = hex2rgb(bg)
 	local color_rgb = hex2rgb(color)
 	return rgb2hex(
-		base_rgb[1] + (color_rgb[1] - base_rgb[1]) * (weight / 100),
-		base_rgb[2] + (color_rgb[2] - base_rgb[2]) * (weight / 100),
-		base_rgb[3] + (color_rgb[3] - base_rgb[3]) * (weight / 100)
+		blend_channel(base_rgb[1], color_rgb[1], weight),
+		blend_channel(base_rgb[2], color_rgb[2], weight),
+		blend_channel(base_rgb[3], color_rgb[3], weight)
 	)
 end
 
