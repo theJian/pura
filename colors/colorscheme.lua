@@ -26,7 +26,7 @@ local bright_green   = '#35840b'
 local bright_yellow  = '#f4ff37'
 local bright_blue    = '#2e46ff'
 local bright_magenta = '#8800a3'
-local bright_cyan    = '#2f9392'
+local bright_cyan    = '#b4dcdf'
 local bright_white   = '#ffffff'
 
 -- Terminal colors
