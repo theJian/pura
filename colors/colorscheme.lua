@@ -1,5 +1,5 @@
 local bit = require 'bit'
-local tohex, bor, lshift, floor = bit.tohex, bit.bor, bit.lshift, math.floor
+local tohex, bor, band, lshift, rshift, floor = bit.tohex, bit.bor, bit.band, bit.lshift, bit.rshift, math.floor
 
 local none           = 'NONE'
 local bg             = '#bfbfc3'
@@ -68,8 +68,8 @@ local function li(from, to)
 end
 
 local function hex2rgb(hex)
-	local r, g, b = hex:sub(2, 3), hex:sub(4, 5), hex:sub(6, 7)
-	r, g, b = tonumber(r, 16), tonumber(g, 16), tonumber(b, 16)
+	local num = tonumber(hex:sub(2), 16)
+	local r, g, b = rshift(num, 16), band(rshift(num, 8), 0x00ff), band(num, 0x0000ff)
 	return { r, g, b }
 end
 
@@ -78,17 +78,25 @@ local function rgb2hex(r, g, b)
 end
 
 local function blend_channel(color1, color2, weight)
-	return color1 + (color2 - color1) * (weight / 100)
+	return color2 + (color1 - color2) * (weight / 100)
 end
 
-local function blend(color, weight)
-	local base_rgb = hex2rgb(bg)
+local function blend(color, weight, base)
+	local base_rgb = hex2rgb(base or bg)
 	local color_rgb = hex2rgb(color)
 	return rgb2hex(
 		blend_channel(base_rgb[1], color_rgb[1], weight),
 		blend_channel(base_rgb[2], color_rgb[2], weight),
 		blend_channel(base_rgb[3], color_rgb[3], weight)
 	)
+end
+
+local function lighten(color, weight)
+	return blend(color, weight, '#ffffff')
+end
+
+local function darken(color, weight)
+	return blend(color, weight, '#000000')
 end
 
 local function load(file)
@@ -118,6 +126,8 @@ local function load(file)
 		hi = hi,
 		li = li,
 		blend = blend,
+		lighten = lighten,
+		darken = darken,
 		none = none,
 		print = print,
 	}
