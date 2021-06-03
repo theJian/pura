@@ -8,6 +8,9 @@ local bg3            = '#e9e8e9'
 local fg             = '#000000'
 local fg2            = '#8d8d90'
 local cursor_line    = '#c7c7cc'
+local diff_green     = '#d4eba8'
+local diff_green2    = '#9ac534'
+local diff_red       = '#ea9595'
 
 -- Normal colors
 local black          = '#000000'
@@ -107,6 +110,9 @@ local function load(file)
 		fg = fg,
 		fg2 = fg2,
 		cursor_line = cursor_line,
+		diff_green = diff_green,
+		diff_green2 = diff_green2,
+		diff_red = diff_red,
 		black = black,
 		red = red,
 		green = green,

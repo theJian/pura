@@ -1,7 +1,7 @@
-hi('DiffAdd',           none,            lighten(bright_green, 60))
-hi('DiffDelete',        none,            lighten(red, 55))
-hi('DiffChange',        none,            lighten(bright_green, 80))
-hi('DiffText',          none,            lighten(bright_green, 60),    'bold')
+hi('DiffAdd',           none,            diff_green)
+hi('DiffDelete',        none,            diff_red)
+hi('DiffChange',        none,            diff_green)
+hi('DiffText',          none,            diff_green2,    'bold')
 
 li('diffRemoved', 'DiffDelete')
 li('diffAdded',   'DiffAdd')
