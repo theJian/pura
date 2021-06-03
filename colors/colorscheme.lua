@@ -9,7 +9,7 @@ local fg             = '#000000'
 local fg2            = '#8d8d90'
 local cursor_line    = '#c7c7cc'
 local diff_green     = '#d4eba8'
-local diff_green2    = '#9ac534'
+local diff_green2    = '#97d874'
 local diff_red       = '#ea9595'
 
 -- Normal colors
