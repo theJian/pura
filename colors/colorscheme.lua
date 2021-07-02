@@ -15,7 +15,7 @@ local diff_red       = '#ea9595'
 -- Normal colors
 local black          = '#000000'
 local red            = '#8a0f2e'
-local green          = '#3a5828'
+local green          = '#16543b'
 local yellow         = '#8e4000'
 local blue           = '#000ead'
 local magenta        = '#5600d6'
@@ -25,11 +25,11 @@ local white          = '#fff2eb'
 -- Bright colors
 local bright_black   = '#454554'
 local bright_red     = '#d30f45'
-local bright_green   = '#35840b'
-local bright_yellow  = '#f4ff37'
+local bright_green   = '#307005'
+local bright_yellow  = '#faff61'
 local bright_blue    = '#2e46ff'
 local bright_magenta = '#8800a3'
-local bright_cyan    = '#b4dcdf'
+local bright_cyan    = '#aed6f4'
 local bright_white   = '#ffffff'
 
 -- Terminal colors
