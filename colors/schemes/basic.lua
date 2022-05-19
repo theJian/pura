@@ -78,6 +78,7 @@ hi('VisualNOS',         none,            white)
 hi('WarningMsg',        yellow,          none,                       'bold,reverse')
 hi('WildMenu',          none,            none,                       'reverse')
 hi('Whitespace',        fg2)
+hi('WinSeparator',      bg2)
 
 li('lCursor',           'Cursor')
 li('CursorIM',          'Cursor')
